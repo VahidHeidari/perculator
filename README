@@ -1,0 +1,7 @@
+Perculator (Performance Calculator and viewer) is a simple time tracker.
+
+ How to build:
+===============
+qmake -project
+qmake
+make
