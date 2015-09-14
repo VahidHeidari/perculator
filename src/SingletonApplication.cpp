@@ -49,8 +49,6 @@ SingletonApplication::~SingletonApplication()
 
 void SingletonApplication::check_pid()
 {
-	pid_t app_pid = getpid();
-
 	// Read PID file if exists.
 	ifstream pid_file_in(PID_FILE_PATH);
 	if (pid_file_in.is_open()) {
@@ -67,7 +65,7 @@ void SingletonApplication::check_pid()
 				tmp.clear();
 				tmp.assign(buff);
 
-				if (tmp.find("switching") != string::npos)
+				if (tmp.find(app_name) != string::npos)
 					throw new SingletonException("There is a running application!\n"
 							"Only one instance of " + app_name + " is allowed.");
 			}
@@ -75,6 +73,7 @@ void SingletonApplication::check_pid()
 	}
 	
 	// Create PID file.
+	pid_t app_pid = getpid();
 	ofstream pid_out(PID_FILE_PATH);
 	pid_out << app_pid;
 	pid_out.close();

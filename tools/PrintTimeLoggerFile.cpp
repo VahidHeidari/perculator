@@ -22,7 +22,7 @@
 #include <iostream>
 #include <string>
 
-#include "../TimeLogger.h"
+#include "../src/TimeLogger.h"
 
 using namespace std;
 

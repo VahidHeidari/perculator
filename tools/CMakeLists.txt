@@ -22,4 +22,4 @@ project(print-timelogger-file)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -std=c++11 -Wall -Wextra -Wpedantic")
 
-add_executable(Print.exe PrintTimeLoggerFile.cpp ../TimeLogger.cpp)
+add_executable(Print.exe PrintTimeLoggerFile.cpp ../src/TimeLogger.cpp)

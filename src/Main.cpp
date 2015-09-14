@@ -52,8 +52,9 @@ int main(int argc, char** argv)
 	//signal(SIGTERM, sig_handler);
 #endif
 
+	std::unique_ptr<SingletonApplication> app;
 	try {
-		SingletonApplication app("Perculator");
+		app = std::unique_ptr<SingletonApplication>(new SingletonApplication("perculator"));
 	} catch (SingletonException* e) {
 		std::cerr << e->what() << std::endl;
 		delete e;
