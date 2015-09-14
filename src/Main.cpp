@@ -20,12 +20,14 @@
 #include "Panel.h"
 
 #include <memory>
+#include <iostream>
 
 #include <qapplication.h>
 #include <qwidget.h>
 
 #include "TimeLogger.h"
 #include "Singleton.h"
+#include "SingletonApplication.h"
 
 #ifdef __linux__
 #include <signal.h>
@@ -49,6 +51,14 @@ int main(int argc, char** argv)
 	//signal(SIGHUP, sig_handler);
 	//signal(SIGTERM, sig_handler);
 #endif
+
+	try {
+		SingletonApplication app("Perculator");
+	} catch (SingletonException* e) {
+		std::cerr << e->what() << std::endl;
+		delete e;
+		return 1;
+	}
 
 	QApplication a(argc, argv);
 
