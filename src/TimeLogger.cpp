@@ -449,7 +449,9 @@ bool TimeLogger::update_log()
 	record.last_update_time = t;
 
 	if (!serialize()) {
-		cerr << "Could not open log file for update at " << t.print(cerr)  << " !" << endl;
+		cerr << "Could not open log file for update at ";
+		t.print(cerr);
+		cerr << " !" << endl;
 		return false;
 	}
 
@@ -467,7 +469,7 @@ string TimeLogger::get_today_file_name() const
 	string filename(buff, strlen(buff));
 	filename.append(".log", 4);
 #ifdef __linux__
-	filename = "/home/vahid/TimeLogger/" + filename;
+	filename = "/home/user/TimeLogger/" + filename;
 #endif
 	return filename;
 }
